@@ -1,0 +1,45 @@
+
+= 1. Modelo de Dominio de Panadería
+MÁSTER EN DESARROLLO DE SOFTWARE 2022
+:toc-title: Index
+:toc: none
+
+:idprefix:
+:idseparator: -
+:imagesdir: images
+
+
+== Diagrama de Clases
+
+
+[plantuml, DiagramaClasesPanaderia, svg]
+....
+
+PANADERIA -up--|> Tienda
+
+PANADERIA o-down-> "1..*" Pan
+
+Pan -up--|> Producto
+
+Pan <|-down- Viena
+Pan <|-down- etc
+Pan <|-down- Bollo
+
+Producto *-down-> Precio
+
+Tienda o-down-> "1..*" Producto
+Tienda o-down--> "0..*" CompraVenta
+Tienda o-down--> "1..*" Vendedor
+Tienda o-down--> "0..*" Cliente
+Tienda *-left-> Local
+
+Vendedor -down-> "0..*" CompraVenta
+Vendedor -up-|> Persona
+Cliente -down-> "1..*" CompraVenta
+Cliente -up-|> Persona
+
+CompraVenta *-down-> Cantidad
+CompraVenta *-down-> Importe
+CompraVenta -up-> "1..*" Producto
+
+....

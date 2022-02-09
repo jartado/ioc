@@ -1,0 +1,63 @@
+
+= TicTacToe
+Práctica del tema 01- Recurrencia
+:toc-title: Index
+:toc: none
+
+:idprefix:
+:idseparator: -
+:imagesdir: images
+
+
+== Descripción del Juego
+
+
+== Modelo del Dominio
+
+
+=== 1. Clases Principales
+
+[plantuml, ClasesPrincipales, svg]
+....
+TicTacToe *-down-> Tablero
+TicTacToe *-down-> "2" Jugador
+TicTacToe *-down-> Turno
+
+Jugador "2" <- Turno
+Tablero <- Jugador
+
+Tablero *-down-> "3x3" Casilla
+Casilla *--> "2" Coordenada
+Casilla o-> "0..1" Ficha
+Jugador o--> "0..3" Ficha
+
+Jugador *--> Color
+Ficha *-> Color
+Color <|-down- X
+Color <|-down- O
+Color <|-down- Verde
+
+Jugador ....> "2..3" AccionPoner
+Jugador ....> "0..*" AccionMover
+
+AccionPoner -> AccionMover :preced
+Accion <|-down- AccionPoner
+Accion <|-down- AccionMover
+Coordenada <. Accion
+
+Jugador *-down-> Objetivo
+Objetivo .down.> "3..*" Accion
+Casilla "3" <. Objetivo
+....
+
+
+=== 2. Clases de Objetivos
+
+[plantuml, ClasesObjetivos, svg]
+
+....
+Objetivo <|-down- Linea
+Objetivo <|-down- Columna
+Objetivo <|-down- Diagonal
+Objetivo <|-down- DiagonalInversa
+....

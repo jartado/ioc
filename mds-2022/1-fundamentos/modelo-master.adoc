@@ -1,0 +1,34 @@
+
+= 1. Modelo de Dominio del Máster
+MÁSTER EN DESARROLLO DE SOFTWARE 2022
+:toc-title: Index
+:toc: none
+
+:idprefix:
+:idseparator: -
+:imagesdir: images
+
+
+== Diagrama de Clases
+
+
+[plantuml, DiagramaClasesMaster, svg]
+....
+
+MASTER *-down-> "54" Unit
+
+Viewer <|-- Critic
+Viewer <|-- Artist
+
+Viewer -> MASTER
+
+Unit *-down-> "0..*" Practice
+
+Practice <|-- Exercise
+Practice <|-- Test
+
+Critic -> Artist
+
+Artist -> Exercise
+
+....
