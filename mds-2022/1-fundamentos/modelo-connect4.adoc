@@ -21,18 +21,17 @@ Game *-d-> Turn
 
 Turn -> "2" Player
 
-Player -> Board
-Player o-d-> Goal
-Player *---> "21" Token
+Player .> Board
+Player *--> "21" Token
 
-Board .d.> Goal
-Board *--> "6x7" Position
+Board .> Goal
+Board *-> "6x7" Position
+Board .> Token
 
-Token --> Position
+Token -> Position
 Token <|-d- RedToken
 Token <|-d- YellowToken
 
-Goal .r.> "4" Position
 Goal <|-d- Horizontal
 Goal <|-d- Vertical
 Goal <|-d- Diagonal
